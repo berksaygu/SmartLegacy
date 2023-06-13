@@ -32,15 +32,20 @@ However, creating a traditional, centralized will for digital assets seems outda
 7. Select your address to connect Celo Network to continue.
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/822ce97d-e89a-492c-9722-5b9a562d2906)
-8. FAUCET KISMI BURAYA EKLENECEK - (FAUCET SİTESİ ŞU ANDA ERROR VERDİĞİ İÇİN SS ALAMADIK)
+8. After you added the Celo Alfojeros Testnet, you need some test tokens to use website. With the following link you can add some test tokes to your network. https://faucet.celo.org/alfajores You can simply copy your wallet address and paste it to empty field. 
 </br></br>
-9. We need to create another Metamask account to send the will money.
+<img width="475" alt="Faucet" src="https://github.com/berksaygu/SmartLegacy/assets/77530240/0a8afce8-7e06-4dd2-9265-5349d3580da6">
+9. After getting the test tokens. You will need token contracts to interact with our smart contract. For this you can use celo docs. https://docs.celo.org/token-addresses In this page you should navigate to Alfajores Testnet and save token contracts for lates use
+</br></br>
+<img width="679" alt="TokenContract" src="https://github.com/berksaygu/SmartLegacy/assets/77530240/ff65dae0-d9c1-487e-9f3a-94b0d6abc955">
+
+10. We need to create another Metamask account to send the will money.
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/cd28b3df-a1fd-481e-bc9a-ae5b6be296b5)
-10. Now we can connect our website with this two accounts.
+11. Now we can connect our website with this two accounts.
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/cc254b3e-1ecf-4992-85ae-ea7a6ef2f4ad)
-11. 
+12. 
 
 ## Screenshots and Demo
 ## Setup Guide
