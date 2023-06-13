@@ -14,8 +14,13 @@
 6. You should add Celo Network to your Metamask to use our smart contract website from https://chainlist.org/?search=celo. 
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/4b6cbf89-1c4a-4966-ba49-8b902a82e0e9)
 7. Select your address to connect Celo Network to continue.
-![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/822ce97d-e89a-492c-9722-5b9a562d2906) <br />
-8. 
+![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/822ce97d-e89a-492c-9722-5b9a562d2906)
+8. FAUCET KISMI BURAYA EKLENECEK - (FAUCET SİTESİ ŞU ANDA ERROR VERDİĞİ İÇİN SS ALAMADIK)
+9. We need to create another Metamask account to send the will money.
+![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/cd28b3df-a1fd-481e-bc9a-ae5b6be296b5)
+10. Now we can connect our website with this two accounts.
+![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/cc254b3e-1ecf-4992-85ae-ea7a6ef2f4ad)
+11. 
 
 ## Screenshots and Demo
 ## Setup Guide
