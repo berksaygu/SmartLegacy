@@ -3,9 +3,20 @@
 ## Metamask Setup
 1. Download the Metamask extension from https://metamask.io
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/89ec2fdc-85b7-4669-bfb8-a5f9c077b53d)
+2. Create a new wallet
+![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/1dbc64b8-1d71-4dab-8cb8-0726c7f79761)
+3. Create a password which is not too easy for safety of your assets.
+![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/ae292e2d-4a9d-4d9c-bab9-9db92689c18f)
+4. In case you forget your password, keep your secret phrase in a safe place to restore your wallet.
+![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/417ca53b-debb-4d4d-ab5d-0d1981e94bae)
+5. After end of the setup you can use metamask.
+![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/6d51d547-1efb-4db5-bc2b-2e5c72778570)
+6. You should add Celo Network to your Metamask to use our smart contract website from https://chainlist.org/?search=celo. 
+![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/4b6cbf89-1c4a-4966-ba49-8b902a82e0e9)
+7. Select your address to connect Celo Network to continue.
+![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/822ce97d-e89a-492c-9722-5b9a562d2906)
+8. 
 
-2. 
-3. 
 ## Screenshots and Demo
 ## Setup Guide
 1. Clone this repository
