@@ -1,5 +1,14 @@
 # Smart Legacy
 ## Introduction
+In this age of emerging technologies, individuals now possess digital assets such as Bitcoin. However, due to the relatively new nature of this technology, there hasn't been much focus on integrating CryptoWills, which are wills powered by blockchain, to manage these assets after a person's passing.
+
+Consider a scenario where someone purchased 100 Bitcoins a decade ago, when each coin was worth approximately $300. Unfortunately, that person has since passed away, and along with them, the access to those 100 Bitcoins, now valued at around $6.1 million in 2021, has been lost.
+
+The irreversible nature of blockchain technology means that once the private key to a wallet is lost, which should only be known to the owner, all the assets within that wallet are lost forever.
+
+This situation could have been managed if the person had created a CryptoWill, specifying how their Bitcoins should be managed. This would have ensured the preservation of the 100 Bitcoins, even after their passing.
+
+However, creating a traditional, centralized will for digital assets seems outdated and introduces a new set of challenges.
 ## Metamask Setup
 1. Download the Metamask extension from https://metamask.io
 </br></br>
