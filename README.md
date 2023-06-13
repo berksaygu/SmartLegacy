@@ -14,45 +14,47 @@ However, creating a traditional, centralized will for digital assets seems outda
 1. Download the Metamask extension from https://metamask.io
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/89ec2fdc-85b7-4669-bfb8-a5f9c077b53d)
-</br>
+
 2. Create a new wallet
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/1dbc64b8-1d71-4dab-8cb8-0726c7f79761)
-</br>
+
 3. Create a password which is not too easy for safety of your assets.
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/ae292e2d-4a9d-4d9c-bab9-9db92689c18f)
-</br>
+
 4. In case you forget your password, keep your secret phrase in a safe place to restore your wallet.
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/417ca53b-debb-4d4d-ab5d-0d1981e94bae)
-</br>
+
 5. After end of the setup you can use metamask.
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/6d51d547-1efb-4db5-bc2b-2e5c72778570)
-</br>
+
 6. You should add Celo Network to your Metamask to use our smart contract website from https://chainlist.org/?search=celo. 
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/4b6cbf89-1c4a-4966-ba49-8b902a82e0e9)
-</br>
+
 7. Select your address to connect Celo Network to continue.
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/822ce97d-e89a-492c-9722-5b9a562d2906)
-</br>
+
 8. After you added the Celo Alfojeros Testnet, you need some test tokens to use website. With the following link you can add some test tokes to your network. https://faucet.celo.org/alfajores You can simply copy your wallet address and paste it to empty field. 
 </br></br>
 <img width="475" alt="Faucet" src="https://github.com/berksaygu/SmartLegacy/assets/77530240/0a8afce8-7e06-4dd2-9265-5349d3580da6">
-</br>
+
 9. After getting the test tokens. You will need token contracts to interact with our smart contract. For this you can use celo docs. https://docs.celo.org/token-addresses In this page you should navigate to Alfajores Testnet and save token contracts for lates use
 </br></br>
 <img width="679" alt="TokenContract" src="https://github.com/berksaygu/SmartLegacy/assets/77530240/ff65dae0-d9c1-487e-9f3a-94b0d6abc955">
-</br>
+
 10. We need to create another Metamask account to send the will money.
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/cd28b3df-a1fd-481e-bc9a-ae5b6be296b5)
+
 11. Now we can connect our website with this two accounts.
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/cc254b3e-1ecf-4992-85ae-ea7a6ef2f4ad)
+
 12. 
 
 ## Screenshots and Demo
