@@ -50,7 +50,7 @@ function App() {
         <main
             className="container"
             style={{
-                //backgroundImage: `url(/blockchain.png)`,
+                backgroundImage: `url(/blockchain.png)`,
                 backgroundPositionX: "-23%",
                 backgroundPositionY: "-9%",
                 backgroundRepeat: "repeat-x",
