@@ -10,7 +10,7 @@ const SearchBar = ({ legacies }) => {
 
     return (
         <>
-            <Typography variant="h4">Your Will Contracts</Typography>
+            <Typography variant="h4">Your Legacies</Typography>
             <TextField
                 variant="standard"
                 placeholder="Enter Contract Name"
@@ -30,9 +30,8 @@ const SearchBar = ({ legacies }) => {
                     <Typography
                         variant="h4"
                         padding="15px"
-                        fontFamily="'Rampart One', cursive"
                     >
-                        No Contracts Yet !
+                        I'm sorry. There is no legacy to show.
                     </Typography>
                 </div>
             ) : (

@@ -115,17 +115,17 @@ const CreateWillForm = ({ addLegacy }) => {
         >
             <CardContent>
                 <Typography
-                    variant="h4"
+                    variant="h5"
                     component="h2"
                     color="textSecondary"
                     gutterBottom
                 >
-                    Create New Will Contract
+                    Leave Legacy to Beloved Ones
                 </Typography>
                 <Grid container justifyContent="center">
                     <Grid item md={3}>
                         <TextField
-                            label="Name for Will"
+                            label="Name your heir"
                             sx={{ m: 1, width: "90%" }}
                             required
                             inputRef={nameRef}
@@ -134,7 +134,7 @@ const CreateWillForm = ({ addLegacy }) => {
                     <Grid item md={9}>
                         <TextField
                             inputRef={heirAddressRef}
-                            label="Beneficiary Address"
+                            label="Address of the heir"
                             sx={{ m: 1, width: "90%" }}
                             required
                         />
@@ -157,7 +157,7 @@ const CreateWillForm = ({ addLegacy }) => {
                             paddingLeft="10px"
                             paddingRight="11px"
                         >
-                            {"Locking Period  →"}
+                            {"Locking Time  →"}
                         </Typography>
                     </Grid>
                     <Grid>
@@ -202,7 +202,7 @@ const CreateWillForm = ({ addLegacy }) => {
                             createNewWill();
                         }}
                     >
-                        Create
+                        Lock
                     </Button>
                 </Grid>
             </CardContent>

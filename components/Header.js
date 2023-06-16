@@ -20,7 +20,7 @@ const Header = ({ addressState, setAddress }) => {
         <Grid
             container
             style={{
-                marginTop: "50px",
+                marginTop: "200px",
                 width: "50%",
             }}
             justify="center"
@@ -33,26 +33,17 @@ const Header = ({ addressState, setAddress }) => {
                 justifyContent="center"
                 textAlign="center"
             >
-                <Typography variant="h1" fontFamily="'Rampart One', cursive">
+                <Typography variant="h2" >
                     Smart Legacy
                 </Typography>
                 <Typography
                     variant="h6"
-                    fontFamily="'Rampart One', cursive"
                     padding="10px"
                 >
                     Write your heir into the blockchain
                 </Typography>
             </Grid>
-            <Grid
-                item
-                md={12}
-                xs={12}
-                justifyContent="center"
-                textAlign="center"
-            >
-                <Image src="/logo.png" alt="Logo" width="500" height="500" />
-            </Grid>
+            
             <Grid item md={12} xs={12} justify="center" textAlign="center">
                 {!address ? (
                     <Button
@@ -82,7 +73,7 @@ const Header = ({ addressState, setAddress }) => {
                             variant="h6"
                             gutterBottom
                         >
-                            {address}
+                            Your wallet address: {address}
                         </Typography>
                         <IconButton
                             style={{ padding: "0 0 5px 0" }}

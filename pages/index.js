@@ -8,7 +8,6 @@ import { Cards, Header, SearchBar } from "../components";
 import { useToast } from "../components/SnackBarContext";
 import LegacyFactoryJson from "../build/contracts/LegacyFactory.json";
 import { LEGACY_FACTORY } from "../constants";
-import blockchain_png from "../public/blockchain.png";
 
 function App() {
     const [legacies, setLegacies] = useState([]);
@@ -51,10 +50,10 @@ function App() {
             className="container"
             style={{
                 backgroundImage: `url(/blockchain.png)`,
-                backgroundPositionX: "-23%",
-                backgroundPositionY: "-9%",
+                // backgroundPositionX: "-23%",
+                // backgroundPositionY: "-9%",
                 backgroundRepeat: "repeat-x",
-                backgroundSize: "900px",
+                backgroundSize: "300px",
             }}
         >
             <Header setAddress={setAddress} addressState={addressState} />
