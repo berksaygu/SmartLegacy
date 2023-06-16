@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@celo/contractkit": "^4.1.0",
     "@openzeppelin/contracts": "^4.9.1",
     "web3": "^4.0.1"
   }

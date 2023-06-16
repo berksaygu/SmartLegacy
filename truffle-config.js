@@ -45,6 +45,7 @@
 // const { MNEMONIC, PROJECT_ID } = process.env;
 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
+
 const Web3 = require("web3");
 const fs = require("fs");
 const ContractKit = require("@celo/contractkit");
@@ -52,7 +53,6 @@ const web3 = new Web3("https://alfajores-forno.celo-testnet.org");
 const kit = ContractKit.newKitFromWeb3(web3);
 const privateKey = fs.readFileSync(".secret").toString().trim();
 kit.connection.addAccount(privateKey);
-
 
 module.exports = {
   /**
