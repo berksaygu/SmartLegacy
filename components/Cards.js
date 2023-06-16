@@ -65,15 +65,15 @@ const CreateWillForm = ({ addLegacy }) => {
             );
 
             console.log(name, address, lockingPeriod, heirAddr);
-            // send transaction to create new locker
+            // send transaction to create new legacy
             const recipt = await factory.methods
                 .newLegacy(name, address, lockingPeriod, heirAddr)
                 .send({ from: address });
 
             console.log("Recipt => ", recipt);
 
-            // add newly created locker in lockers
-            addLegacy(recipt.events.NewLegacy.returnValues.locker);
+            // add newly created legacy in legacies
+            addLegacy(recipt.events.NewLegacy.returnValues.legacy);
         }).catch((err) => {
             console.log("CreateWill => ", err);
             showToast(err.message, "error");
@@ -235,7 +235,7 @@ const ClaimWillForm = ({ addLegacy }) => {
                 const _ = await contract.methods.name().call();
 
                 // if name got fetched then it's a valid contract
-                // add locker address to locker list
+                // add legacy address to legacy list
                 addLegacy(address);
             } catch (err) {
                 console.log(err);
