@@ -117,7 +117,7 @@ const CreateWillForm = ({ addLocker }) => {
                 <Typography
                     variant="h5"
                     component="h2"
-                    color="textSecondary"
+                    color="black"
                     gutterBottom
                 >
                     Leave Legacy to Beloved Ones
@@ -262,7 +262,7 @@ const ClaimWillForm = ({ addLocker }) => {
                     color="textSecondary"
                     gutterBottom
                 >
-                    Claim Will
+                    Claim Your Legacy
                 </Typography>
                 <Grid container justifyContent="center">
                     <Grid item md={9}>
@@ -282,7 +282,7 @@ const ClaimWillForm = ({ addLocker }) => {
                             addWill();
                         }}
                     >
-                        Add
+                        Claim
                     </Button>
                 </Grid>
             </CardContent>
@@ -301,8 +301,8 @@ const Cards = ({ addLocker }) => {
                     setTabVal(newValue);
                 }}
             >
-                <Tab label="Create" value="create"></Tab>
-                <Tab label="Claim" value="claim"></Tab>
+                <Tab label="Create" value="create" style={{ color: "#FFFFFF" }}></Tab>
+                <Tab label="Claim" value="claim" style={{ color: "#FFFFFF" }}></Tab>
             </Tabs>
             <TabPanel value="create" index={tabVal}>
                 <CreateWillForm addLocker={addLocker} />
