@@ -10,10 +10,10 @@ import {
     Button,
 } from "@mui/material";
 import { useContractKit } from "@celo-tools/use-contractkit";
-import LegacyJson from "../build/contracts/Legacy.json";
-import LegacyFactoryJson from "../build/contracts/LegacyFactory.json";
+import LockerJson from "../build/contracts/Locker.json";
+import LockerFactoryJson from "../build/contracts/LockerFactory.json";
 import { useToast } from "../components/SnackBarContext";
-import { LEGACY_FACTORY } from "../constants";
+import { LOCKER, LOCKER_FACTORY } from "../constants";
 import cx from "classnames";
 
 import styles from "../styles/Cards.module.css";
@@ -22,9 +22,9 @@ const TabPanel = ({ children, value, index }) => {
     return <div className={styles.tabpanel}>{value === index && children}</div>;
 };
 
-const CreateWillForm = ({ addLegacy }) => {
+const CreateWillForm = ({ addLocker }) => {
     const { address, performActions } = useContractKit();
-    const heirAddressRef = useRef();
+    const beneficiaryAddressRef = useRef();
     const nameRef = useRef();
 
     const showToast = useToast();
@@ -52,28 +52,28 @@ const CreateWillForm = ({ addLegacy }) => {
             }
 
             // validate if address entered has correct checksum
-            const heirAddr = heirAddressRef.current.value;
-            if (!kit.web3.utils.isAddress(heirAddr)) {
+            const beneficiaryAddr = beneficiaryAddressRef.current.value;
+            if (!kit.web3.utils.isAddress(beneficiaryAddr)) {
                 showToast("Invalid Beneficiary Address", "error");
                 return;
             }
 
-            // create Legacy Factory contract instance
+            // create Locker Factory contract instance
             const factory = new kit.web3.eth.Contract(
-                LegacyFactoryJson.abi,
-                LEGACY_FACTORY
+                LockerFactoryJson.abi,
+                LOCKER_FACTORY
             );
 
-            console.log(name, address, lockingPeriod, heirAddr);
-            // send transaction to create new legacy
+            console.log(name, address, lockingPeriod, beneficiaryAddr);
+            // send transaction to create new locker
             const recipt = await factory.methods
-                .newLegacy(name, address, lockingPeriod, heirAddr)
+                .newLocker(name, address, lockingPeriod, beneficiaryAddr)
                 .send({ from: address });
 
             console.log("Recipt => ", recipt);
 
-            // add newly created legacy in legacies
-            addLegacy(recipt.events.NewLegacy.returnValues.legacy);
+            // add newly created locker in lockers
+            addLocker(recipt.events.NewLocker.returnValues.locker);
         }).catch((err) => {
             console.log("CreateWill => ", err);
             showToast(err.message, "error");
@@ -133,8 +133,8 @@ const CreateWillForm = ({ addLegacy }) => {
                     </Grid>
                     <Grid item md={9}>
                         <TextField
-                            inputRef={heirAddressRef}
-                            label="Address of the heir"
+                            inputRef={beneficiaryAddressRef}
+                            label="Beneficiary Address"
                             sx={{ m: 1, width: "90%" }}
                             required
                         />
@@ -157,7 +157,7 @@ const CreateWillForm = ({ addLegacy }) => {
                             paddingLeft="10px"
                             paddingRight="11px"
                         >
-                            {"Locking Time  →"}
+                            {"Locking Period  →"}
                         </Typography>
                     </Grid>
                     <Grid>
@@ -210,7 +210,7 @@ const CreateWillForm = ({ addLegacy }) => {
     );
 };
 
-const ClaimWillForm = ({ addLegacy }) => {
+const ClaimWillForm = ({ addLocker }) => {
     const addrRef = useRef();
     const { performActions } = useContractKit();
     const showToast = useToast();
@@ -227,7 +227,7 @@ const ClaimWillForm = ({ addLegacy }) => {
             // check if address is Will contract
             try {
                 const contract = new kit.web3.eth.Contract(
-                    LegacyJson.abi,
+                    LockerJson.abi,
                     address
                 );
 
@@ -235,8 +235,8 @@ const ClaimWillForm = ({ addLegacy }) => {
                 const _ = await contract.methods.name().call();
 
                 // if name got fetched then it's a valid contract
-                // add legacy address to legacy list
-                addLegacy(address);
+                // add locker address to locker list
+                addLocker(address);
             } catch (err) {
                 console.log(err);
                 showToast("Address Not Valid Will Contract", "error");
@@ -290,7 +290,7 @@ const ClaimWillForm = ({ addLegacy }) => {
     );
 };
 
-const Cards = ({ addLegacy }) => {
+const Cards = ({ addLocker }) => {
     const [tabVal, setTabVal] = useState("create");
 
     return (
@@ -305,10 +305,10 @@ const Cards = ({ addLegacy }) => {
                 <Tab label="Claim" value="claim"></Tab>
             </Tabs>
             <TabPanel value="create" index={tabVal}>
-                <CreateWillForm addLegacy={addLegacy} />
+                <CreateWillForm addLocker={addLocker} />
             </TabPanel>
             <TabPanel value="claim" index={tabVal}>
-                <ClaimWillForm addLegacy={addLegacy} />
+                <ClaimWillForm addLocker={addLocker} />
             </TabPanel>
         </div>
     );

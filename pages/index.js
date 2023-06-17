@@ -6,11 +6,12 @@ import {
 
 import { Cards, Header, SearchBar } from "../components";
 import { useToast } from "../components/SnackBarContext";
-import LegacyFactoryJson from "../build/contracts/LegacyFactory.json";
-import { LEGACY_FACTORY } from "../constants";
+import LockerFactoryJson from "../build/contracts/LockerFactory.json";
+import { LOCKER_FACTORY } from "../constants";
+import blockchain_png from "../public/blockchain.png";
 
 function App() {
-    const [legacies, setLegacies] = useState([]);
+    const [lockers, setLockers] = useState([]);
     const { address, performActions } = useContractKit();
     const [addressState, setAddressState] = useState();
     const showToast = useToast();
@@ -19,15 +20,15 @@ function App() {
         performActions(async (kit) => {
             // get factory contract instance
             const factory = new kit.web3.eth.Contract(
-                LegacyFactoryJson.abi,
-                LEGACY_FACTORY
+                LockerFactoryJson.abi,
+                LOCKER_FACTORY
             );
 
-            // get all legacies owned by current address
-            const allLegacies = await factory.methods.getLegacy(address).call();
+            // get all lockers owned by current address
+            const allLockers = await factory.methods.getLocker(address).call();
 
             // set to state
-            setLegacies(allLegacies);
+            setLockers(allLockers);
         }).catch((err) => {
             console.log("App => ", err);
             showToast(err.message, "error");
@@ -36,8 +37,8 @@ function App() {
         setAddress(address);
     }, [addressState]);
 
-    const addLegacy = (legacy) => {
-        setLegacies([legacy, ...legacies]);
+    const addLocker = (locker) => {
+        setLockers([locker, ...lockers]);
     };
 
     const setAddress = (addr) => {
@@ -50,15 +51,15 @@ function App() {
             className="container"
             style={{
                 backgroundImage: `url(/blockchain.png)`,
-                // backgroundPositionX: "-23%",
-                // backgroundPositionY: "-9%",
+                backgroundPositionX: "-23%",
+                backgroundPositionY: "-9%",
                 backgroundRepeat: "repeat-x",
-                backgroundSize: "300px",
+                backgroundSize: "900px",
             }}
         >
             <Header setAddress={setAddress} addressState={addressState} />
-            <Cards addLegacy={addLegacy} />
-            <SearchBar legacies={legacies} />
+            <Cards addLocker={addLocker} />
+            <SearchBar lockers={lockers} />
         </main>
     );
 }

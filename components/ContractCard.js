@@ -20,19 +20,19 @@ import cx from "classnames";
 import styles from "../styles/ContractCard.module.css";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { useToast } from "../components/SnackBarContext";
-import LegacyJson from "../build/contracts/Legacy.json";
+import LockerJson from "../build/contracts/Locker.json";
 import IERC20Json from "../build/contracts/IERC20.json";
 import { BLOCKSCOUT_BASE_URL } from "../constants";
 import Big from "big.js";
 
-export default function ContractCard({ legacyAddr }) {
+export default function ContractCard({ lockerAddr }) {
     const [expanded, setExpanded] = useState(false);
     const [name, setName] = useState("");
-    const [ownLegacy, setOwnLegacy] = useState(true);
-    const [lockingTime, setLockingTime] = useState();
+    const [ownLocker, setOwnLocker] = useState(true);
+    const [lockingPeriod, setLockingPeriod] = useState();
     const [lastActive, setLastActive] = useState();
     const [owner, setOwner] = useState();
-    const [heir, setHeir] = useState();
+    const [beneficiary, setBeneficiary] = useState();
     const [dummyState, forceUpdate] = useReducer((x) => x + 1, 0);
 
     const handleExpandClick = () => {
@@ -45,39 +45,39 @@ export default function ContractCard({ legacyAddr }) {
     useEffect(() => {
         performActions(async (kit) => {
             // get contract instance
-            const legacy = new kit.web3.eth.Contract(
-                LegacyJson.abi,
-                legacyAddr
+            const locker = new kit.web3.eth.Contract(
+                LockerJson.abi,
+                lockerAddr
             );
 
-            // get title of the legacy
-            const _name = await legacy.methods.name().call();
+            // get title of the locker
+            const _name = await locker.methods.name().call();
             setName(_name);
 
             // check owner
-            const _owner = await legacy.methods.owner().call();
-            setOwnLegacy(_owner === address);
+            const _owner = await locker.methods.owner().call();
+            setOwnLocker(_owner === address);
             setOwner(_owner);
 
-            // get heir address
-            const _heir = await legacy.methods.heir().call();
-            setHeir(_heir);
+            // get beneficiary address
+            const _beneficiary = await locker.methods.beneficiary().call();
+            setBeneficiary(_beneficiary);
 
             // get last active time
             const _lastActiveTime = parseInt(
-                await legacy.methods.lastOwnerActive().call()
+                await locker.methods.lastOwnerActive().call()
             );
             console.log(_lastActiveTime);
             setLastActive(_lastActiveTime);
 
             // get locking period
-            const _lockingTime = parseInt(
-                await legacy.methods.lockingTime().call()
+            const _lockingPeriod = parseInt(
+                await locker.methods.lockingPeriod().call()
             );
-            console.log(_lockingTime);
-            setLockingTime(_lockingTime);
+            console.log(_lockingPeriod);
+            setLockingPeriod(_lockingPeriod);
 
-            console.log("Updated at => ", _lockingTime + _lastActiveTime);
+            console.log("Updated at => ", _lockingPeriod + _lastActiveTime);
         }).catch((err) => {
             console.log("ContractCard => ", err);
             showToast(err.message, "error");
@@ -87,13 +87,13 @@ export default function ContractCard({ legacyAddr }) {
     const sendHeartBeat = () => {
         performActions(async (kit) => {
             // get contract instance
-            const legacy = new kit.web3.eth.Contract(
-                LegacyJson.abi,
-                legacyAddr
+            const locker = new kit.web3.eth.Contract(
+                LockerJson.abi,
+                lockerAddr
             );
 
             // send heartbeat transaction
-            const receipt = await legacy.methods
+            const receipt = await locker.methods
                 .heartbeat()
                 .send({ from: address });
 
@@ -116,12 +116,12 @@ export default function ContractCard({ legacyAddr }) {
         <Card
             className={clsx(
                 styles.root,
-                ownLegacy ? styles.createborder : styles.claimborder
+                ownLocker ? styles.createborder : styles.claimborder
             )}
         >
             <CardHeader
                 title={name}
-                subheader={legacyAddr}
+                subheader={lockerAddr}
                 action={
                     <IconButton
                         className={clsx(styles.expand, {
@@ -144,14 +144,14 @@ export default function ContractCard({ legacyAddr }) {
                             style={{
                                 color:
                                     new Date(
-                                        (lastActive + lockingTime) * 1000
+                                        (lastActive + lockingPeriod) * 1000
                                     ) < new Date()
                                         ? "#5DD999"
                                         : "rgba(255, 0, 0, 0.5)",
                             }}
                         >
                             <b>
-                                {new Date((lastActive + lockingTime) * 1000) <
+                                {new Date((lastActive + lockingPeriod) * 1000) <
                                 new Date()
                                     ? "Unlocked"
                                     : "Locked"}
@@ -166,11 +166,11 @@ export default function ContractCard({ legacyAddr }) {
                     <Typography>
                         Unlock At :&nbsp;&nbsp;&nbsp;&nbsp;
                         {new Date(
-                            (lastActive + lockingTime) * 1000
+                            (lastActive + lockingPeriod) * 1000
                         ).toDateString()}
                         &nbsp;
                         {new Date(
-                            (lastActive + lockingTime) * 1000
+                            (lastActive + lockingPeriod) * 1000
                         ).toLocaleTimeString()}
                     </Typography>
                     <Typography>
@@ -178,12 +178,12 @@ export default function ContractCard({ legacyAddr }) {
                         {owner}
                     </Typography>
                     <Typography paddingBottom="2rem">
-                        Heir : &nbsp;{heir}
+                        Beneficiary : &nbsp;{beneficiary}
                     </Typography>
-                    <ListTokens legacyAddr={legacyAddr} />
-                    <WithdrawToken legacyAddr={legacyAddr} />
-                    {ownLegacy && <DepositToken legacyAddr={legacyAddr} />}
-                    {ownLegacy && (
+                    <ListTokens lockerAddr={lockerAddr} />
+                    <WithdrawToken lockerAddr={lockerAddr} />
+                    {ownLocker && <DepositToken lockerAddr={lockerAddr} />}
+                    {ownLocker && (
                         <Button
                             size="large"
                             sx={{ m: 1 }}
@@ -200,7 +200,7 @@ export default function ContractCard({ legacyAddr }) {
     );
 }
 
-const DepositToken = ({ legacyAddr }) => {
+const DepositToken = ({ lockerAddr }) => {
     const [expanded, setExpanded] = useState(false);
     const [tokenAddr, setTokenAddr] = useState("");
     const [validAddr, setValidAddr] = useState(false);
@@ -293,10 +293,10 @@ const DepositToken = ({ legacyAddr }) => {
             }
 
             // send transcation to transfer given amount of tokens to
-            // legacy address
+            // locker address
             const receipt = await token.methods
                 .transfer(
-                    legacyAddr,
+                    lockerAddr,
                     Big(amount)
                         .times(Big(10).pow(parseInt(decimals)))
                         .toFixed()
@@ -389,7 +389,7 @@ const DepositToken = ({ legacyAddr }) => {
     );
 };
 
-const WithdrawToken = ({ legacyAddr }) => {
+const WithdrawToken = ({ lockerAddr }) => {
     const [expanded, setExpanded] = useState(false);
     const [tokenAddr, setTokenAddr] = useState("");
     const [validAddr, setValidAddr] = useState(false);
@@ -431,7 +431,7 @@ const WithdrawToken = ({ legacyAddr }) => {
             }
 
             // now get the balance of current account
-            const balance = await token.methods.balanceOf(legacyAddr).call();
+            const balance = await token.methods.balanceOf(lockerAddr).call();
             console.log(
                 balance.toString(),
                 _decimals,
@@ -466,7 +466,7 @@ const WithdrawToken = ({ legacyAddr }) => {
             console.log(tokenAddr);
             const token = new kit.web3.eth.Contract(IERC20Json.abi, tokenAddr);
             const [_balance, decimals] = await Promise.all([
-                token.methods.balanceOf(legacyAddr).call(),
+                token.methods.balanceOf(lockerAddr).call(),
                 token.methods.decimals().call(),
             ]);
 
@@ -482,13 +482,13 @@ const WithdrawToken = ({ legacyAddr }) => {
             }
 
             // send transaction to transfer given amount of tokens to
-            // const get legacy contract
-            const legacyContract = new kit.web3.eth.Contract(
-                LegacyJson.abi,
-                legacyAddr
+            // const get locker contract
+            const lockerContract = new kit.web3.eth.Contract(
+                LockerJson.abi,
+                lockerAddr
             );
 
-            const receipt = await legacyContract.methods
+            const receipt = await lockerContract.methods
                 .withdrawERC20(
                     tokenAddr,
                     address,
@@ -582,7 +582,7 @@ const WithdrawToken = ({ legacyAddr }) => {
     );
 };
 
-const ListTokens = ({ legacyAddr }) => {
+const ListTokens = ({ lockerAddr }) => {
     const [expanded, setExpanded] = useState(false);
     const [tokens, setTokens] = useState([]);
 
@@ -590,7 +590,7 @@ const ListTokens = ({ legacyAddr }) => {
 
     useEffect(() => {
         const getTokens = async () => {
-            const url = `${BLOCKSCOUT_BASE_URL}?module=account&action=tokenlist&address=${legacyAddr}`;
+            const url = `${BLOCKSCOUT_BASE_URL}?module=account&action=tokenlist&address=${lockerAddr}`;
 
             const data = await (await fetch(url)).json();
             console.log(data);

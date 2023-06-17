@@ -43,7 +43,15 @@ const Header = ({ addressState, setAddress }) => {
                     Write your heir into the blockchain
                 </Typography>
             </Grid>
-            
+            <Grid
+                item
+                md={12}
+                xs={12}
+                justifyContent="center"
+                textAlign="center"
+            >
+                <Image src="/logo.png" alt="Logo" width="500" height="500" />
+            </Grid>
             <Grid item md={12} xs={12} justify="center" textAlign="center">
                 {!address ? (
                     <Button

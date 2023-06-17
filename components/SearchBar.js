@@ -5,7 +5,7 @@ import styles from "../styles/SearchBar.module.css";
 import Image from "next/image";
 import "../styles/SearchBar.module.css";
 
-const SearchBar = ({ legacies }) => {
+const SearchBar = ({ lockers }) => {
     const [contractName, setContractName] = useState("");
 
     return (
@@ -19,7 +19,7 @@ const SearchBar = ({ legacies }) => {
                 onChange={(e) => setContractName(e.target.value)}
             />
 
-            {!legacies.length ? (
+            {!lockers.length ? (
                 <div style={{ padding: "20px", textAlign: "center" }}>
                     <Image
                         src="/undraw_Vault_re_s4my.svg"
@@ -30,13 +30,14 @@ const SearchBar = ({ legacies }) => {
                     <Typography
                         variant="h4"
                         padding="15px"
+                        color="#FFFFFF"
                     >
-                        I'm sorry. There is no legacy to show.
+                        Sorry, there is no legacy to show.
                     </Typography>
                 </div>
             ) : (
-                legacies.map((addr) => (
-                    <ContractCard key={addr} legacyAddr={addr} />
+                lockers.map((addr) => (
+                    <ContractCard key={addr} lockerAddr={addr} />
                 ))
             )}
         </>
