@@ -59,7 +59,7 @@ However, creating a traditional, centralized will for digital assets seems outda
 ## Setup Guide
 1. Clone this repository
 ```console
-git clone https://github.com/berksaygu/blokchainWill.git
+git clone https://github.com/berksaygu/SmartLegacy.git
 ```
 2. Then cd into the cloned repo and install all required NPM packages (Our version is compatible with Node.js v16.16(LTS). Other versions of Node.js may not work.
 ```console
