@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
     Card,
     CardContent,
@@ -13,7 +13,7 @@ import { useContractKit } from "@celo-tools/use-contractkit";
 import LockerJson from "../build/contracts/Locker.json";
 import LockerFactoryJson from "../build/contracts/LockerFactory.json";
 import { useToast } from "../components/SnackBarContext";
-import { LOCKER, LOCKER_FACTORY } from "../constants";
+import { LOCKER_FACTORY } from "../constants";
 import cx from "classnames";
 
 import styles from "../styles/Cards.module.css";
@@ -47,14 +47,14 @@ const CreateWillForm = ({ addLocker }) => {
             // check if locking time is valid or not
             const lockingPeriod = calculteLockingPeriod();
             if (lockingPeriod <= 0) {
-                showToast("Invalid Locking Period", "error");
+                showToast("Invalid Locking Time", "error");
                 return;
             }
 
             // validate if address entered has correct checksum
             const beneficiaryAddr = beneficiaryAddressRef.current.value;
             if (!kit.web3.utils.isAddress(beneficiaryAddr)) {
-                showToast("Invalid Beneficiary Address", "error");
+                showToast("Invalid Heir Address", "error");
                 return;
             }
 
@@ -125,7 +125,7 @@ const CreateWillForm = ({ addLocker }) => {
                 <Grid container justifyContent="center">
                     <Grid item md={3}>
                         <TextField
-                            label="Name your heir"
+                            label="Name your legacy"
                             sx={{ m: 1, width: "90%" }}
                             required
                             inputRef={nameRef}
@@ -134,7 +134,7 @@ const CreateWillForm = ({ addLocker }) => {
                     <Grid item md={9}>
                         <TextField
                             inputRef={beneficiaryAddressRef}
-                            label="Beneficiary Address"
+                            label="Address of the Heir"
                             sx={{ m: 1, width: "90%" }}
                             required
                         />
@@ -239,7 +239,6 @@ const ClaimWillForm = ({ addLocker }) => {
                 addLocker(address);
             } catch (err) {
                 console.log(err);
-                showToast("Address Not Valid Will Contract", "error");
             }
         }).catch((err) => {
             console.log("ClaimWill => ", err);
@@ -257,9 +256,9 @@ const ClaimWillForm = ({ addLocker }) => {
         >
             <CardContent>
                 <Typography
-                    variant="h4"
+                    variant="h5"
                     component="h2"
-                    color="textSecondary"
+                    color="black"
                     gutterBottom
                 >
                     Claim Your Legacy

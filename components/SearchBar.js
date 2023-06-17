@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Typography, InputBase, Grid, TextField } from "@mui/material";
+import React, {  useState } from "react";
+import { Typography, TextField } from "@mui/material";
 import ContractCard from "./ContractCard";
 import styles from "../styles/SearchBar.module.css";
 import Image from "next/image";
@@ -10,10 +10,9 @@ const SearchBar = ({ lockers }) => {
 
     return (
         <>
-            <Typography variant="h4">Your Legacies</Typography>
+            <Typography variant="h4" color={"white"} sx={{ marginBottom: "25px" }}>Your Legacies</Typography>
             <TextField
-                variant="standard"
-                placeholder="Enter Contract Name"
+                placeholder=" Enter Contract Name"
                 className={styles.searchbar}
                 value={contractName}
                 onChange={(e) => setContractName(e.target.value)}
@@ -23,7 +22,7 @@ const SearchBar = ({ lockers }) => {
                 <div style={{ padding: "20px", textAlign: "center" }}>
                     <Image
                         src="/undraw_Vault_re_s4my.svg"
-                        alt="No Will Contracts"
+                        alt="No Legacy Contracts"
                         width="500"
                         height="250"
                     />

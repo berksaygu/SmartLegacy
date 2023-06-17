@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     ContractKitProvider,
     useContractKit,
@@ -8,7 +8,6 @@ import { Cards, Header, SearchBar } from "../components";
 import { useToast } from "../components/SnackBarContext";
 import LockerFactoryJson from "../build/contracts/LockerFactory.json";
 import { LOCKER_FACTORY } from "../constants";
-import blockchain_png from "../public/blockchain.png";
 
 function App() {
     const [lockers, setLockers] = useState([]);
@@ -70,8 +69,7 @@ function WrappedApp() {
     return (
         <ContractKitProvider
             dapp={{
-                name: "My awesome dApp",
-                description: "My awesome description",
+                name: "Smart Legacy",
                 url: "https://example.com",
             }}
         >

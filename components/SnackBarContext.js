@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Snackbar, Alert as MuiAlert } from "@mui/material";
 
 const Alert = React.forwardRef(function Alert(props, ref) {

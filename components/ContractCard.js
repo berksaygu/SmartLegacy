@@ -11,12 +11,10 @@ import {
     Grid,
     Button,
     List,
-    ListItem,
     ListItemText,
 } from "@mui/material";
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import cx from "classnames";
 import styles from "../styles/ContractCard.module.css";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { useToast } from "../components/SnackBarContext";
@@ -152,7 +150,7 @@ export default function ContractCard({ lockerAddr }) {
                         >
                             <b>
                                 {new Date((lastActive + lockingPeriod) * 1000) <
-                                new Date()
+                                    new Date()
                                     ? "Unlocked"
                                     : "Locked"}
                             </b>
@@ -178,7 +176,7 @@ export default function ContractCard({ lockerAddr }) {
                         {owner}
                     </Typography>
                     <Typography paddingBottom="2rem">
-                        Beneficiary : &nbsp;{beneficiary}
+                        Heir : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{beneficiary}
                     </Typography>
                     <ListTokens lockerAddr={lockerAddr} />
                     <WithdrawToken lockerAddr={lockerAddr} />
@@ -458,7 +456,7 @@ const WithdrawToken = ({ lockerAddr }) => {
 
         // first check whether adderss is valid
         if (!validAddr) {
-            showToast("Not Valid Token Address", "error");
+            showToast("Token Address Is Not Valid", "error");
             return;
         }
         performActions(async (kit) => {

@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Grid, Typography, Button, IconButton, Card, CardContent } from "@mui/material";
 import { useContractKit } from "@celo-tools/use-contractkit";
 import { Refresh } from "@material-ui/icons";
 import { useToast } from "./SnackBarContext";
-import Image from "next/image";
 import "../styles/Header.module.css";
 
-const Header = ({ addressState, setAddress }) => {
+const Header = ({ setAddress }) => {
     const { address, connect, destroy, kit, performActions, getConnectedKit } =
         useContractKit();
 
@@ -29,11 +28,10 @@ const Header = ({ addressState, setAddress }) => {
             <Grid
                 item
                 xs={12}
-                justifyContent="left"
+                justifyContent="center"
                 style={{
                     position: "absolute",
-                    top: "0",
-                    left: "0",
+                    top: "25px",
                     padding: "20px",
                 }}
             >
@@ -73,13 +71,13 @@ const Header = ({ addressState, setAddress }) => {
                         Connect Wallet
                     </Button>
                 ) : (
-                    <Grid container 
-                    style={{
-                        marginTop: "50px",
-                        width: "100%",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}>
+                    <Grid container
+                        style={{
+                            marginTop: "50px",
+                            width: "100%",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}>
                         <Grid item>
                             <Card
                                 style={{
@@ -88,8 +86,8 @@ const Header = ({ addressState, setAddress }) => {
                                     backgroundImage: "radial-gradient(at 83% 67%, rgb(152, 231, 156) 0, transparent 58%), radial-gradient(at 67% 20%, hsla(357, 94%, 71%, 1) 0, transparent 59%), radial-gradient(at 88% 35%, hsla(222, 81%, 65%, 1) 0, transparent 50%), radial-gradient(at 31% 91%, hsla(9, 61%, 61%, 1) 0, transparent 52%), radial-gradient(at 27% 71%, hsla(336, 91%, 65%, 1) 0, transparent 49%), radial-gradient(at 74% 89%, hsla(30, 98%, 65%, 1) 0, transparent 51%), radial-gradient(at 53% 75%, hsla(174, 94%, 68%, 1) 0, transparent 45%)",
                                     width: "400px",
                                     height: "175px",
-                                    
-                                    
+
+
                                 }}
                             >
                                 <CardContent>
@@ -120,7 +118,7 @@ const Header = ({ addressState, setAddress }) => {
                                             position: "center",
                                             top: "5px",
                                             right: "10px",
-                                            
+
                                         }}
                                         onClick={(e) =>
                                             connect().catch((err) => {
