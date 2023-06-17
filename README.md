@@ -55,9 +55,7 @@ However, creating a traditional, centralized will for digital assets seems outda
 </br></br>
 ![image](https://github.com/berksaygu/SmartLegacy/assets/89379205/cc254b3e-1ecf-4992-85ae-ea7a6ef2f4ad)
 
-12. 
 
-## Screenshots and Demo
 ## Setup Guide
 1. Clone this repository
 ```console
